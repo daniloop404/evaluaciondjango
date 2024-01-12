@@ -1,0 +1,46 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Online Store{% endblock %}
+
+{% block header %}Online Store{% endblock %}
+
+{% block content %}
+{% load static %}
+
+<!-- Store Start -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="section-title text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+            <p class="fs-5 fw-medium fst-italic text-primary">Online Store</p>
+            <h1 class="display-6">Want to stay healthy? Choose tea taste</h1>
+        </div>
+
+        <div class="row g-4">
+            {% for product in products %}
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="{{ forloop.counter|add:1 }}00ms">
+                <div class="store-item position-relative text-center">
+                    <img class="img-fluid" src="{{ product.image.url }}" alt="{{ product.title }}">
+                    <div class="p-4">
+                        <div class="text-center mb-3">
+                            <p>{{ product.rating }} stars</p>
+                        </div>
+                        <h4 class="mb-3">{{ product.title }}</h4>
+                        <p>{{ product.description }}</p>
+                        <h4 class="text-primary">${{ product.price }}</h4>
+                    </div>
+                    <div class="store-overlay">
+                        <a href="" class="btn btn-primary rounded-pill py-2 px-4 m-2">More Detail <i class="fa fa-arrow-right ms-2"></i></a>
+                        <!-- Add to cart functionality can be implemented here -->
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.1s">
+            <a href=" class="btn btn-primary rounded-pill py-3 px-5">View More Products</a>
+        </div>
+    </div>
+</div>
+<!-- Store End -->
+{% endblock %}
